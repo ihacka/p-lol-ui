@@ -1,8 +1,10 @@
 'use strict'
 
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import {branch} from 'baobab-react/higher-order';
 import styles from './style.css';
+
+import ProfileCard from '../../components/ProfileCard/index.js';
 
 class LeftCont extends Component {
   constructor(props){
@@ -10,11 +12,26 @@ class LeftCont extends Component {
   }
 
   render() {
+    let leaderBoards = this.props.leaderBoard;
+    let leaderBoardList;
+
+    if (leaderBoards !== undefined){
+        console.log(leaderBoards);
+        leaderBoardList = leaderBoards.map(function(leaderBoard){
+          return <ProfileCard userDetails={leaderBoard} />;
+        });
+    }
+
     return (
-     <div styleName='header'>
-        Left Container
+     <div className={styles.background}>
+        <div className={styles.title}>Leaderboard</div>
+         <div style={{ padding: '50px 0 0 50px'}}>
+             {leaderBoardList}
+         </div>
       </div>);
   }
 }
 
-export default CSSModules(LeftCont, styles);
+export default branch({
+    leaderBoard: ['leaderBoard']
+            }, LeftCont);

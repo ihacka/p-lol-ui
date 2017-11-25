@@ -1,0 +1,19 @@
+.card {
+    color: #fff;
+    font: Roboto;
+    height: 90%;
+    margin: 19px 0px 0 2px;
+    background-color: #999;
+}
+
+.left{
+    text-align: left;
+}
+
+.center{
+    text-align: center;
+}
+
+.right{
+    text-align: right;
+}

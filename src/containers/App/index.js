@@ -2,9 +2,16 @@
 
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
+import {Container, Row, Col } from 'react-grid-system';
+import YoutubePlayer from 'react-youtube-player';
+
+import MatchImage from '../../../images/match1.png';
+
+import {root} from 'baobab-react/higher-order';
+import tree from '../../state.js';
+
 import LeftCont from '../LeftCont/index.js';
-import RightCont from '../RightCont/index.js';
-import MainCont from '../MainCont/index.js';
+import MatchStatistics from '../../components/MatchStatistics/index.js';
 import styles from './style.css';
 
 class App extends Component {
@@ -14,18 +21,63 @@ class App extends Component {
 
   render() {
     return (
-     <div styleName='header'>
-         <div styleName='left'>
-             <LeftCont />
-         </div>
-         <div styleName='left'>
-             <MainCont />
-         </div>
-         <div styleName='right'>
-             <RightCont />
-         </div>
-      </div>);
+        <Container nogutter fluid style={{ padding: '0px' }}>
+            <Row nogutter>
+                <Col nogutter md={2}>
+                    <LeftCont />
+                </Col>
+                <Col nogutter md={8}>
+                    <Row nogutter style={{ backgroundColor: '#000', height: '400px'}}>
+                        <Col nogutter md={6}>
+                            <YoutubePlayer videoId="f-F2ZtmYpX0" playbackState="unstarted" configuration={{showinfo: 0,controls: 0, size:'large', height:'500px'}}/>
+                        </Col>
+                        <Col nogutter md={6}>
+                            <MatchStatistics />
+                        </Col>
+                    </Row>
+                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px'}}>
+                        <Col nogutter md={12}>
+                        <div className={ styles.title }>Arsenal vs Totenham</div>
+                        </Col>
+                    </Row>
+                    <Row nogutter>
+                        <Col nogutter md={10}>
+                            10 col
+                            <Row nogutter>
+                                <Col nogutter md={12}>
+                                    12
+                                </Col>
+                            </Row>
+                            <Row nogutter>
+                                <Col nogutter md={6}>
+                                    6
+                                </Col>
+                                <Col nogutter md={6}>
+                                    6
+                                </Col>
+                            </Row>
+                            <Row nogutter>
+                                <Col nogutter md={12}>
+                                    12
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col nogutter md={2}>
+                    <Row nogutter>
+                        mpla
+                    </Row>
+                    <Row nogutter>
+                        mpla2
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
+    );
   }
 }
 
-export default CSSModules(App, styles);
+export default root(
+    tree, App
+)

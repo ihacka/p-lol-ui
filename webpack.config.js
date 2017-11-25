@@ -50,7 +50,18 @@ module.exports = {
               loaders: [
                   'style-loader?sourceMap',
                   'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
-              ]}
+              ]},
+          {
+              test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+              use: [
+                  {
+                      loader: 'file-loader',
+                      options: {
+                          name: '[path][name]-[hash:8].[ext]'
+                      },
+                  },
+              ]
+          },
       ]
   },
     plugins: [
