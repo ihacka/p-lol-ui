@@ -1,20 +1,14 @@
-/* eslint-disable no-var */
-'use strict';
-
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require('autoprefixer');
 
-const bourbon_paths = require('node-neat').includePaths
-const neat_paths = require('node-bourbon').includePaths
-const scssIncludePaths = bourbon_paths.concat(neat_paths);
-
-const postCSS = [ autoprefixer({ browsers: ["> 1%", "last 2 versions"] }) ];
-
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css"
-});
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: './index.html',
+  filename: 'index.html',
+  inject: 'body'
+})
 
 const cssloaders = [
     {
@@ -23,6 +17,11 @@ const cssloaders = [
             modules: true
         }
     }];
+
+const env_client = {
+    "IS_BROWSER": JSON.stringify(true),
+    "ROOT_DIR": JSON.stringify(__dirname)
+}
 
 const resolve_options = {
     extensions: ['.js'],
@@ -35,20 +34,25 @@ const resolve_options = {
     }
 };
 
-const env_client = {
-  "IS_BROWSER": JSON.stringify(true),
-  "ROOT_DIR": JSON.stringify(__dirname)
-}
-
 module.exports = {
-    entry: './src/index',
-    output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js',
-        publicPath: '/public/'
-    },
-    resolve: resolve_options,
-    devtool: 'source-map',
+  entry: './src/index.js',
+  output: {
+    path: path.resolve('dist'),
+    filename: 'index_bundle.js'
+  },
+  resolve: resolve_options,
+  devtool: 'source-map',
+  module: {
+      loaders: [
+          { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+          { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+          { test: /\.css$/,
+              loaders: [
+                  'style-loader?sourceMap',
+                  'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+              ]}
+      ]
+  },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
@@ -57,46 +61,6 @@ module.exports = {
             }
         }),
         new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true}),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
         new webpack.DefinePlugin(env_client),
-        extractSass
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                loaders: 'babel-loader',
-                include: path.join(__dirname, 'src'),
-                exclude: /node_modules/
-            },
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: cssloaders
-                })
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    },
-                    {
-                        loader: "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
-                    },
-                    {
-                        loader: "postcss-loader"
-                    },
-                    {
-                        loader: "sass-loader"
-                    }
-                ]
-            }
-        ]
-    }
-};
+        HtmlWebpackPluginConfig]
+}
