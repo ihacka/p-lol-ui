@@ -5,13 +5,14 @@ import CSSModules from 'react-css-modules';
 import {Container, Row, Col } from 'react-grid-system';
 import YoutubePlayer from 'react-youtube-player';
 
-import MatchImage from '../../../images/match1.png';
-
 import {root} from 'baobab-react/higher-order';
 import tree from '../../state.js';
 
 import LeftCont from '../LeftCont/index.js';
 import MatchStatistics from '../../components/MatchStatistics/index.js';
+import Profile from '../../components/Profile/index.js';
+import MarketsCard from '../../containers/MarketsCard/index.js'
+
 import styles from './style.css';
 
 class App extends Component {
@@ -23,13 +24,13 @@ class App extends Component {
     return (
         <Container nogutter fluid style={{ padding: '0px' }}>
             <Row nogutter>
-                <Col nogutter md={2}>
+                <Col md={2}>
                     <LeftCont />
                 </Col>
                 <Col nogutter md={8}>
                     <Row nogutter style={{ backgroundColor: '#000', height: '400px'}}>
                         <Col nogutter md={6}>
-                            <YoutubePlayer videoId="f-F2ZtmYpX0" playbackState="unstarted" configuration={{showinfo: 0,controls: 0, size:'large', height:'500px'}}/>
+                            <YoutubePlayer videoId="tcqgIysVQcE" playbackState="unstarted" configuration={{showinfo: 0,controls: 0, size:'large', height:'500px'}}/>
                         </Col>
                         <Col nogutter md={6}>
                             <MatchStatistics />
@@ -40,33 +41,13 @@ class App extends Component {
                         <div className={ styles.title }>Arsenal vs Totenham</div>
                         </Col>
                     </Row>
-                    <Row nogutter>
-                        <Col nogutter md={10}>
-                            10 col
-                            <Row nogutter>
-                                <Col nogutter md={12}>
-                                    12
-                                </Col>
-                            </Row>
-                            <Row nogutter>
-                                <Col nogutter md={6}>
-                                    6
-                                </Col>
-                                <Col nogutter md={6}>
-                                    6
-                                </Col>
-                            </Row>
-                            <Row nogutter>
-                                <Col nogutter md={12}>
-                                    12
-                                </Col>
-                            </Row>
-                        </Col>
+                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px'}}>
+                       <MarketsCard />
                     </Row>
                 </Col>
                 <Col nogutter md={2}>
                     <Row nogutter>
-                        mpla
+                        <Profile />
                     </Row>
                     <Row nogutter>
                         mpla2

@@ -7,7 +7,7 @@ import {Container, Row, Col } from 'react-grid-system';
 
 import ProfileImage from '../../../images/ProfilePic.png';
 
-class ProfileCard extends Component {
+class Profile extends Component {
   constructor(props){
     super(props);
       if (props.input !== 'undefined') {
@@ -41,30 +41,35 @@ class ProfileCard extends Component {
 
     return (
      <div className={styles.card} style={ borderColor }>
-         <img src={ProfileImage} style= {{ position: 'absolute', zIndex: '10', width: '110px', left: '-45px' }} />
-         <Container nogutter fluid style={{ padding: '0px', fontFamily: 'Roboto'  }}>
-         <Row nogutter style={ firstRow }>
-             { position }
-         </Row>
-         <Row nogutter style={ secondRow }>
-             { name }
-         </Row>
-         <Row nogutter style={ thirdRow }>
-             BANK: <br /> { amount }
-         </Row>
-         <Row nogutter style={ fourthRow }>
-           <Col nogutter md={4}>OPT AMT<br />{ optAmount }</Col>
-           <Col nogutter md={4}>OPN BETS<br />{ openBets }</Col>
-           <Col nogutter md={4}>POT. WINS<br /> { potWins } </Col>
-         </Row>
-         <Row nogutter style={ fifthRow }>
-           <Col nogutter md={12}>CARDS: * * * * *</Col>
-         </Row>
-       </Container>
+         <Container fluid style={{ padding: '0px', fontFamily: 'Roboto'  }}>
+             <Row style={{ backgroundColor: '#2f9fff', height:'35px', lineHeight: '35px', textAlign: 'right' }}>
+                 <Col md={12}>Logout</Col>
+             </Row>
+             <Row style={{ backgroundColor: 'blue' }}>
+                 <img src={ProfileImage} style= {{ width: '110px' }} />
+             </Row>
+             <Row nogutter style={ firstRow }>
+                 { position }
+             </Row>
+             <Row nogutter style={ secondRow }>
+                 { name }
+             </Row>
+             <Row nogutter style={ thirdRow }>
+                 BANK: <br /> { amount }
+             </Row>
+             <Row nogutter style={ fourthRow }>
+               <Col nogutter md={4}>OPT AMT<br />{ optAmount }</Col>
+               <Col nogutter md={4}>OPN BETS<br />{ openBets }</Col>
+               <Col nogutter md={4}>POT. WINS<br /> { potWins } </Col>
+             </Row>
+             <Row nogutter style={ fifthRow }>
+               <Col nogutter md={12}>CARDS: * * * * *</Col>
+             </Row>
+          </Container>
      </div>);
   }
 }
 
 export default branch({
         colors: ['colors']
-    }, ProfileCard);
+    }, Profile);

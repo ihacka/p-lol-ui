@@ -16,7 +16,6 @@ class LeftCont extends Component {
     let leaderBoardList;
 
     if (leaderBoards !== undefined){
-        console.log(leaderBoards);
         leaderBoardList = leaderBoards.map(function(leaderBoard){
           return <ProfileCard userDetails={leaderBoard} />;
         });
@@ -25,7 +24,7 @@ class LeftCont extends Component {
     return (
      <div className={styles.background}>
         <div className={styles.title}>Leaderboard</div>
-         <div style={{ padding: '50px 0 0 50px'}}>
+         <div style={{ padding: '50px 0 0 50px' }}>
              {leaderBoardList}
          </div>
       </div>);
