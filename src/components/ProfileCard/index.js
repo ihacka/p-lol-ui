@@ -6,20 +6,22 @@ import styles from './style.css';
 import {Container, Row, Col } from 'react-grid-system';
 
 import ProfileImage from '../../../images/ProfilePic.png';
+import ProfileImage2 from '../../../images/ProfilePic2.png';
+import ProfileImage3 from '../../../images/ProfilePic3.png';
+import ProfileImage4 from '../../../images/ProfilePic4.png';
+import ProfileImage5 from '../../../images/ProfilePic5.png';
+
 
 class ProfileCard extends Component {
   constructor(props){
     super(props);
-      if (props.input !== 'undefined') {
-          console.log(props.input);
-      }
   }
 
   render() {
     let self = this;
 
     let userDetails = self.props.userDetails;
-    let position='', name = '', amount= '0', optAmount='0', openBets='0', potWins= '0', cards= '0', color= 'blue';
+    let image, position='', name = '', amount= '0', optAmount='0', openBets='0', potWins= '0', cards= '0', color= 'blue';
 
     if (userDetails !== undefined){
         position = userDetails.position;
@@ -30,6 +32,13 @@ class ProfileCard extends Component {
         potWins= userDetails.potWins;
         cards= userDetails.cards;
         borderColor=userDetails.borderColor;
+        switch (userDetails.image){
+            case "1": image = ProfileImage; break;
+            case "2": image = ProfileImage2; break;
+            case "3": image = ProfileImage3; break;
+            case "4": image = ProfileImage4; break;
+            case "5": image = ProfileImage5; break;
+        }
     }
 
     let borderColor = { borderColor: borderColor, position: 'relative' };
@@ -41,7 +50,7 @@ class ProfileCard extends Component {
 
     return (
      <div className={styles.card} style={ borderColor }>
-         <img src={ProfileImage} style= {{ position: 'absolute', zIndex: '10', width: '110px', left: '-45px' }} />
+         <img src={ image } style= {{ position: 'absolute', zIndex: '10', width: '110px', left: '-45px' }} />
          <Container nogutter fluid style={{ padding: '0px', fontFamily: 'Roboto'  }}>
          <Row nogutter style={ firstRow }>
              { position }

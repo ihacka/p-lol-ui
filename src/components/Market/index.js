@@ -39,9 +39,12 @@ class Market extends Component {
 
   render() {
     let self = this;
-    let marketsList;
     let id = self.props.id;
+    let marketsList;
+    let marketsOdds;
     let markets = self.props.markets;
+    let odds = self.props.odds;
+
 
     if (markets !== undefined) {
         marketsList = markets.map(function (market) {
@@ -52,6 +55,17 @@ class Market extends Component {
             );
         });
     }
+      console.log(odds);
+      if (odds !== undefined) {
+          marketsOdds = odds.map(function (odd) {
+
+              return (
+                  <Col nogutter md={4}>
+                      <div className={styles.oddButton}>{odd}</div>
+                  </Col>
+              );
+          });
+      }
 
     return (
         <Col nogutter fluid className={ styles.marketCard}>
@@ -59,6 +73,9 @@ class Market extends Component {
                 <Col nogutter md={12} className={ styles.marketTitle } style= {{ paddingLeft: '10px' }}>
                     { self.props.title }
                 </Col>
+            </Row>
+            <Row nogutter className={ styles.marketScore }>
+                { marketsOdds }
             </Row>
             <Row nogutter className={ styles.marketScore }>
                 { marketsList }

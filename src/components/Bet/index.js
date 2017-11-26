@@ -19,8 +19,8 @@ class BetColumn extends Component {
             <Col nogutter md={1} style={{ borderRight: '1px solid #ccc', cursor: 'pointer', lineHeight:'66px' }}>X</Col>
             <Col nogutter md={11} style= {{ padding: '5px' }} >
                 <Row nogutter className={ styles.team}>
-                    <Col nogutter md={8} style= {{ textAlign: 'left' }} >Chelsea</Col>
-                    <Col nogutter md={4} style= {{ textAlign: 'right' }} >1,80</Col>
+                    <Col nogutter md={8} style= {{ textAlign: 'left' }} >Arsenal</Col>
+                    <Col nogutter md={4} style= {{ textAlign: 'right' }} >1,73</Col>
                 </Row>
                 <Row nogutter className={ styles.matchWinner}>
                     <Col nogutter md={12} >Match Winner</Col>

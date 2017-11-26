@@ -23,7 +23,12 @@ class LeftCont extends Component {
 
     return (
      <div className={styles.background}>
-        <div className={styles.title}>Leaderboard</div>
+        <div className={styles.title}>
+            <div style={{ float: 'left' }} >Leaderboard</div>
+            <div style={{ float: 'right', paddingLeft: '100px' }}>
+                Pool <br /> 300 $
+            </div>
+        </div>
          <div style={{ padding: '50px 0 0 50px' }}>
              {leaderBoardList}
          </div>

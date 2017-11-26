@@ -24,7 +24,6 @@ class BetColumn extends Component {
              <Row style={{ backgroundColor: '#545556', }}>
                  <Col md={12} style={{ color: 'white', padding: '15px' }}>
                     <Bet />
-                    <Bet />
                  </Col>
              </Row>
              <Row style={{ backgroundColor: '#545556', height: '1600px' }}>

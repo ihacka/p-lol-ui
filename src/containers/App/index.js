@@ -37,20 +37,20 @@ class App extends Component {
                     <LeftCont />
                 </Col>
                 <Col nogutter md={8}>
-                    <Row nogutter style={{ backgroundColor: '#000', height: '400px'}}>
+                    <Row nogutter style={{ backgroundColor: '#000', height: '400px', zIndex: '100'}}>
                         <Col nogutter md={6}>
-                            <YoutubePlayer videoId="tcqgIysVQcE" playbackState="unstarted" configuration={{showinfo: 0,controls: 0, size:'large', height:'500px'}}/>
+                            <YoutubePlayer videoId="tcqgIysVQcE" playbackState="playing" configuration={{showinfo: 0,controls: 0, size:'large', height:'500px'}}/>
                         </Col>
                         <Col nogutter md={6}>
                             <MatchStatistics />
                         </Col>
                     </Row>
-                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px'}}>
+                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px', zIndex: '100'}}>
                         <Col nogutter md={12}>
                             <div className={ styles.title }>Arsenal vs Totenham</div>
                         </Col>
                     </Row>
-                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px', paddingRight: '10px', height: '100%'}}>
+                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px', paddingRight: '10px', height: '100%', zIndex: '900'}}>
                        <MarketsCard />
                     </Row>
                 </Col>
