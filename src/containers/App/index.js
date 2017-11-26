@@ -6,13 +6,14 @@ import {Container, Row, Col } from 'react-grid-system';
 import YoutubePlayer from 'react-youtube-player';
 
 import {root} from 'baobab-react/higher-order';
-import tree from '../../state.js';
 
 import LeftCont from '../LeftCont/index.js';
 import MatchStatistics from '../../components/MatchStatistics/index.js';
 import Profile from '../../components/Profile/index.js';
 import MarketsCard from '../../containers/MarketsCard/index.js'
 import BetColumn from '../../components/BetColumn/index.js'
+import StateManager from '../../state.js';
+
 
 import styles from './style.css';
 
@@ -23,6 +24,7 @@ class App extends Component {
 
     shouldComponentUpdate(nextProps, nextState){
         let self = this;
+        console.log(StateManager.get());
         return (nextProps!==self.props || nextState !==self.state)
     }
 
@@ -48,7 +50,7 @@ class App extends Component {
                             <div className={ styles.title }>Arsenal vs Totenham</div>
                         </Col>
                     </Row>
-                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px', paddingRight: '10px'}}>
+                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px', paddingRight: '10px', height: '100%'}}>
                        <MarketsCard />
                     </Row>
                 </Col>
@@ -67,5 +69,5 @@ class App extends Component {
 }
 
 export default root(
-    tree, App
+    StateManager.getStore(), App
 )

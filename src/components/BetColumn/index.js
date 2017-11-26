@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {branch} from 'baobab-react/higher-order';
 import styles from './style.css';
 import {Container, Row, Col } from 'react-grid-system';
-
+import Bet from '../../components/Bet/index.js'
 import ProfileImage from '../../../images/ProfilePic.png';
 
 class BetColumn extends Component {
@@ -17,9 +17,19 @@ class BetColumn extends Component {
 
     return (
          <Col nogutter md={12} fluid style={{ padding: '0px', fontFamily: 'Roboto'  }}>
-             <Row style={{ backgroundColor: '#545556', height: '1600px', textAlign: 'right', paddingRight: '10px' }}>
-                 <Col md={12} style={{ color: 'white' }}>
-
+             <Row style={{ backgroundColor: '#545556' }}>
+                 <Col md={6} className={ styles.title }>Betslip</Col>
+                 <Col md={6} className={ styles.title_deactive }>Open Bets</Col>
+             </Row>
+             <Row style={{ backgroundColor: '#545556', }}>
+                 <Col md={12} style={{ color: 'white', padding: '15px' }}>
+                    <Bet />
+                    <Bet />
+                 </Col>
+             </Row>
+             <Row style={{ backgroundColor: '#545556', height: '1600px' }}>
+                 <Col md={12} style={{ color: 'white', padding: '15px' }}>
+                     <div className={ styles.placeBetButton }>Place Bet</div>
                  </Col>
              </Row>
           </Col>
@@ -28,5 +38,5 @@ class BetColumn extends Component {
 }
 
 export default branch({
-        colors: ['colors']
+        bets: ['bets']
     }, BetColumn);

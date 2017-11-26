@@ -5,7 +5,7 @@ import {branch} from 'baobab-react/higher-order';
 import styles from './style.css';
 import {Container, Row, Col } from 'react-grid-system';
 import objectAssign from 'object-assign';
-import tree from '../../state.js';
+import StateManager from '../../state.js';
 
 import { CSSTransition, transit } from "react-css-transition";
 
@@ -19,23 +19,22 @@ class Market extends Component {
 
   shouldComponentUpdate(nextProps, nextState){
       let self = this;
-      console.log(self.props.id, this.state);
+      console.log(nextProps.bets);
       return (nextProps!==self.props || nextState !==self.state)
   }
 
     handleClick(variable, id) {
       let self = this;
 
-      let mpla = (this.state[id + '_' + variable] === undefined) ? true : (this.state[id + '_' + variable]) ? false : true;
+      let betComb = (self.state[id + '_' + variable] === undefined) ? true : (this.state[id + '_' + variable]) ? false : true;
 
       self.setState({
-          [id + '_' + variable]: mpla
+          [id + '_' + variable]: betComb
       });
 
-      console.log(tree.get());
-        let bets = { bets: this.state };
-      let newTree = objectAssign({}, tree.get(), bets);
-      tree.set(newTree);
+        let bets = { bets: self.state };
+        StateManager.getStore().merge({ 'bets': { [id]: self.state } });
+
     }
 
   render() {
@@ -43,8 +42,6 @@ class Market extends Component {
     let marketsList;
     let id = self.props.id;
     let markets = self.props.markets;
-
-    console.log(markets);
 
     if (markets !== undefined) {
         marketsList = markets.map(function (market) {
@@ -59,7 +56,7 @@ class Market extends Component {
     return (
         <Col nogutter fluid className={ styles.marketCard}>
             <Row nogutter>
-                <Col nogutter md={12} className={ styles.marketTitle }>
+                <Col nogutter md={12} className={ styles.marketTitle } style= {{ paddingLeft: '10px' }}>
                     { self.props.title }
                 </Col>
             </Row>
