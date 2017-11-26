@@ -6,6 +6,10 @@
     background-color: #545556;
 }
 
+.hovers{
+    padding: 1px;
+}
+
 .marketTitle{
     padding: 0px 0px 0px 20px;
     color: #fff;
@@ -21,7 +25,6 @@
     padding: 10px 20px;
     text-align: center;
     border: 1px solid #6d6d6d;
-    background-color: #6d6d6d;
     border-radius: 3px;
     margin: 2px;
     cursor: pointer;

@@ -12,6 +12,7 @@ import LeftCont from '../LeftCont/index.js';
 import MatchStatistics from '../../components/MatchStatistics/index.js';
 import Profile from '../../components/Profile/index.js';
 import MarketsCard from '../../containers/MarketsCard/index.js'
+import BetColumn from '../../components/BetColumn/index.js'
 
 import styles from './style.css';
 
@@ -20,8 +21,14 @@ class App extends Component {
     super(props);
   }
 
+    shouldComponentUpdate(nextProps, nextState){
+        let self = this;
+        return (nextProps!==self.props || nextState !==self.state)
+    }
+
   render() {
-    return (
+
+      return (
         <Container nogutter fluid style={{ padding: '0px' }}>
             <Row nogutter>
                 <Col md={2}>
@@ -38,19 +45,19 @@ class App extends Component {
                     </Row>
                     <Row nogutter style= {{ backgroundColor: 'black', margin: '0px'}}>
                         <Col nogutter md={12}>
-                        <div className={ styles.title }>Arsenal vs Totenham</div>
+                            <div className={ styles.title }>Arsenal vs Totenham</div>
                         </Col>
                     </Row>
-                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px'}}>
+                    <Row nogutter style= {{ backgroundColor: 'black', margin: '0px', paddingRight: '10px'}}>
                        <MarketsCard />
                     </Row>
                 </Col>
                 <Col nogutter md={2}>
-                    <Row nogutter>
+                    <Row>
                         <Profile />
                     </Row>
                     <Row nogutter>
-                        mpla2
+                        <BetColumn />
                     </Row>
                 </Col>
             </Row>

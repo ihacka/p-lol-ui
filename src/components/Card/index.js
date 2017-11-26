@@ -3,6 +3,7 @@
 import React, {Component} from 'react';
 import {branch} from 'baobab-react/higher-order';
 import styles from './style.css';
+
 import card1 from '../../../images/card1.png';
 import card2 from '../../../images/card2.png';
 import card3 from '../../../images/card3.png';
@@ -27,7 +28,7 @@ class Card extends Component {
       }
     return (
         <div>
-            <img src={card} style= {{ height: '200px', float: 'left' }} />
+            <img src={card} className={styles.hovers } style= {{ height: '200px', float: 'left' }} />
         </div>
      );
   }

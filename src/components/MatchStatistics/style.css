@@ -1,7 +1,9 @@
 .statisticBoard {
     color: #fff;
-    margin: 19px 0px 0 2px;
+    margin: 19px 15px 0 2px;
     background-color: #545556;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .teamScore{
@@ -11,7 +13,6 @@
 .rowStyle{
     background-color: #6d6d6d;
     color: white;
-    border:1px solid #000;
     border-radius: 3px;
     font-size: 15px;
     padding: 9px 0;

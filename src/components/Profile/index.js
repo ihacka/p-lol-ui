@@ -10,66 +10,65 @@ import ProfileImage from '../../../images/ProfilePic.png';
 class Profile extends Component {
   constructor(props){
     super(props);
-      if (props.input !== 'undefined') {
-          console.log(props.input);
-      }
   }
 
   render() {
     let self = this;
 
-    let userDetails = self.props.userDetails;
+    let account = self.props.account;
     let position='', name = '', amount= '0', optAmount='0', openBets='0', potWins= '0', cards= '0', color= 'blue';
 
-    if (userDetails !== undefined){
-        position = userDetails.position;
-        name = userDetails.name;
-        amount= userDetails.amount;
-        optAmount= userDetails.optAmount;
-        openBets= userDetails.openBets;
-        potWins= userDetails.potWins;
-        cards= userDetails.cards;
-        borderColor=userDetails.borderColor;
+    if (account !== undefined){
+        position = account.position;
+        name = account.name;
+        amount= account.amount;
+        optAmount= account.optAmount;
+        openBets= account.openBets;
+        potWins= account.potWins;
+        cards= account.cards;
     }
 
-    let borderColor = { borderColor: borderColor, position: 'relative' };
-    let firstRow = { paddingLeft: '35%', fontSize: '8px', lineHeight: '12px', paddingTop: '10px', paddingBottom: '0px' };
-    let secondRow = { borderBottom: '2px solid #999', margin: '0 5% 0 35%', fontSize: '16px', lineHeight: '20px', paddingTop: '5px', paddingBottom: '10px'};
-    let thirdRow = { borderBottom: '2px solid #999', margin: '0 5%', padding: '0 0 0 30%', fontSize: '14px', lineHeight: '20px', paddingTop: '10px',  paddingBottom: '10px'};
-    let fourthRow = { textAlign: 'center' , borderBottom: '2px solid #999', margin: '0 5%', fontSize: '14px', lineHeight: '20px', paddingTop: '10px',  paddingBottom: '10px'};
+    let firstRow = { fontSize: '12px', lineHeight: '12px', paddingTop: '10px', paddingBottom: '0px' };
+    let secondRow = {  fontSize: '16px', lineHeight: '20px', paddingTop: '5px', paddingBottom: '10px'};
+    let thirdRow = { borderBottom: '1px solid #fff',fontSize: '14px', paddingTop: '2px',  paddingBottom: '2px'};
+    let fourthRow = { textAlign: 'center' , fontSize: '14px', paddingTop: '2px',  paddingBottom: '2px'};
     let fifthRow = { textAlign: 'center', fontSize: '12px', paddingTop: '10px' };
 
     return (
-     <div className={styles.card} style={ borderColor }>
-         <Container fluid style={{ padding: '0px', fontFamily: 'Roboto'  }}>
-             <Row style={{ backgroundColor: '#2f9fff', height:'35px', lineHeight: '35px', textAlign: 'right' }}>
-                 <Col md={12}>Logout</Col>
+         <Col nogutter md={12} fluid style={{ padding: '0px', fontFamily: 'Roboto'  }}>
+             <Row style={{ backgroundColor: '#00B9EE', height:'35px', lineHeight: '35px', textAlign: 'right', paddingRight: '10px' }}>
+                 <Col md={12} style={{ color: 'white' }}>Logout</Col>
              </Row>
-             <Row style={{ backgroundColor: 'blue' }}>
-                 <img src={ProfileImage} style= {{ width: '110px' }} />
+             <Row style={{ backgroundColor: '#004899' }}>
+                 <Col nogutter md={4}>
+                     <img src={ProfileImage} style= {{ width: '100px', height: '100px', position: 'absolute', padding:'5px' }} />
+                 </Col>
+                 <Col nogutter md={8} style={{ color: 'white', paddingLeft: '15px' }}>
+                     <Row nogutter style={ firstRow }>
+                         My stats:
+                     </Row>
+                     <Row nogutter style={ secondRow }>
+                         { name }
+                     </Row>
+                     <Row nogutter style={ thirdRow }>
+                         BANK: { amount }
+                     </Row>
+                     <Row nogutter style={ fourthRow }>
+                         OPT AMT { optAmount }
+                     </Row>
+                     <Row nogutter style={ fourthRow }>
+                         OPN BETS { openBets }
+                     </Row>
+                     <Row nogutter style={ fourthRow }>
+                         POT. WINS { potWins }
+                     </Row>
+                 </Col>
              </Row>
-             <Row nogutter style={ firstRow }>
-                 { position }
-             </Row>
-             <Row nogutter style={ secondRow }>
-                 { name }
-             </Row>
-             <Row nogutter style={ thirdRow }>
-                 BANK: <br /> { amount }
-             </Row>
-             <Row nogutter style={ fourthRow }>
-               <Col nogutter md={4}>OPT AMT<br />{ optAmount }</Col>
-               <Col nogutter md={4}>OPN BETS<br />{ openBets }</Col>
-               <Col nogutter md={4}>POT. WINS<br /> { potWins } </Col>
-             </Row>
-             <Row nogutter style={ fifthRow }>
-               <Col nogutter md={12}>CARDS: * * * * *</Col>
-             </Row>
-          </Container>
-     </div>);
+          </Col>
+    );
   }
 }
 
 export default branch({
-        colors: ['colors']
+        account: ['account']
     }, Profile);

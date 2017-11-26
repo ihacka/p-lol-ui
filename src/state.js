@@ -1,6 +1,18 @@
 import Baobab from 'baobab';
 
 const tree = new Baobab({
+    bets:{
+
+    },
+    account: {
+        name: 'Nikos Tsiftis',
+        amount: '123123$',
+        optAmount: '210$',
+        openBets: '4',
+        potWins: '2000$',
+        cards: '3',
+        borderColor: 'yellow'
+    },
     colors: ['yellow', 'blue', 'orange'],
     matchStatistics: {
         aTeam: 'Arsenal',
