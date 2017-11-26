@@ -32,8 +32,8 @@ class StateManager {
             //     { aTeam: '', minute: '20', bTeam: 'Corner Kick' }
             // ],
             incidentList: [
-                { aTeam: 'Team on the field', minute: '0', bTeam: '' },
-                { aTeam: '', minute: '0', bTeam: 'Team on the field' },
+                { aTeam: '', minute: '0', bTeam: '' },
+                { aTeam: '', minute: '0', bTeam: '' },
                 { aTeam: '', minute: '0', bTeam: '' },
                 { aTeam: '', minute: '0', bTeam: '' },
                 { aTeam: '', minute: '0', bTeam: '' },
